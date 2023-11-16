@@ -10,10 +10,10 @@ program test
     real(rk) :: rm(npts, ninteg)
     real(rk) :: rs(npts, ninteg)
 
-    print *, "rm before call:"  ! (uninitialized)
-    print "(*(g0))", ((rm(i,j), " ", j = 1, ninteg), new_line("A"), i = 1, npts)
+    print *, "rs before call:"  ! (uninitialized)
+    print "(*(g0))", ((rs(i,j), " ", j = 1, ninteg), new_line("A"), i = 1, npts)
     call GetDryDepExCoeffs(rb,rc,rm,rs)
-    print *, "rm after call:"
-    print "(*(g0))", ((rm(i,j), " ", j = 1, ninteg), new_line("A"), i = 1, npts)
+    print *, "rs after call:"
+    print "(*(g0))", ((rs(i,j), " ", j = 1, ninteg), new_line("A"), i = 1, npts)
 
 end program test

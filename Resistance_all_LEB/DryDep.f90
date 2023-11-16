@@ -101,7 +101,7 @@ subroutine GetDryDepExCoeffs(rb,rc,rm,rs)
     ubar   = (/1.77E+01, 0.225845E+02, 0.294898E+02, 0.399192E+02, 0.571712E+02, 0.913008E+02, 0.282668E+03, 0.282688E+03/)              !data from CANACC
     clai   = (/4.45E+00, 0.395672E+01, 0.331488E+01, 0.211422E+01, 0.148396E+01, 0.393690E+00, 0.000000E+00, 0.000000E+00/)              !data from CANACC
 
-    tin = (17.0*365.0+5.0)*24.0*3600.0+11.0*3600.0          !this is 07/28/2016 11am, seconds since Jan 1,2000 NOON.
+    tin = (16.0*365.0+4.0)*24.0*3600.0+(31.0+29.0+31.0+30.0+31.0+30.0+27.0)*24.0*3600.0+(11.0+5.0)*3600.0          !this is 07/28/2016 11am, seconds since Jan 1,2000 NOON england
     slat = 35.0597  !this is observation site
     slon = -83.4306 !this is observation site
 
@@ -128,15 +128,15 @@ subroutine GetDryDepExCoeffs(rb,rc,rm,rs)
                         pmbzref = 1000.0          !air pressure at measurement height (mb)
                         ppfdzref = 2000.0         !PPFD at measurement height (umol/m^2-s)
                         sradzref = 700.0         !shortwave solar radiation at measurement height (W/m^2)
-                        Call PartitionRad(zarad,pmbzref,ppfdzref,sradzref,ppfd_direct,ppfd_diffus,nir_direct,nir_diffus) 
+                        Call PartitionRAD(zarad,pmbzref,ppfdzref,sradzref,ppfd_direct,ppfd_diffus,nir_direct,nir_diffus) 
 
                         !to get rabs_sun,rabs_shd,ppfd_sun,ppfd_shd,fsun,fshd
                         tkzref = 290.0           !air temperature at measurement height (K)
-                        eatm = esat(tkzref)*relhumi/100.0
+                        eatm = esat(tkzref)*relhumi/100.0   !esat(kPa),this unit is from CANACC
 !                        x = 1.0
 !                        kd = 0.60               !readin from input files
 !                        tsoilk = 294.0           !readin temp of soil at 5cm (K)
-                        lwdnzref = 4.14472E+02
+                        lwdnzref = 4.14472E+02   !W/m^2, from CANACC
                         Call CalcRadProfiles(clai,lai,eatm,lwdnzref,nir_direct,nir_diffus,ppfd_direct,ppfd_diffus,tkzref,x,zarad,  &
                                              kd,tk,tsoilk,ppfd_sun,ppfd_shd,rabs_sun,rabs_shd,fsun,fshd)
  

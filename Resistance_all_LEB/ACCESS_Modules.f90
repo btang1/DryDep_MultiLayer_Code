@@ -13,7 +13,7 @@ module ACCESS_Modules
            SoilResist, rs_zhang_df, SoilRbg, &
            mdiffh2o, RelativeHumidity,gpla,  &
            rbl, rcl, rml, CalcWeightedProfiles,  &
-           CalcOneLevelLEB,PartitionRad,     &
+           CalcOneLevelLEB,PartitionRAD,     &
            CalcRadProfiles, SolarZenithAngle,  &
            esat 
          
@@ -1074,7 +1074,7 @@ subroutine PartitionRAD(zarad,pmbzref,ppfdzref,sradzref,ppfd_direct,ppfd_diffus,
 
     ! water absorption in NIR for 10 mm precipitable water
     ! (expression used here is that used in CANOAK, but is different than that given in Weis & Norman)
-    wa = 1773.0* 0.077*(2.0*pc) ** 0.30
+    wa = 1373.0* 0.077*(2.0*pc) ** 0.30
 
     ! potential direct beam NIR
     rdnir = (748.0*exp(-0.06*pc) - wa)* cosza

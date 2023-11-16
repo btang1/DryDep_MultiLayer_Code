@@ -32,6 +32,6 @@ module ACCESS_Constants
     real(kind=dp), parameter                :: pi = 3.1415926535
     real(kind=dp), parameter                :: kd = 0.6
     real(kind=dp), parameter                :: x = 1.0
-    real(kind=dp), parameter                :: tsoilk = 294.0
+    real(kind=dp), parameter                :: tsoilk = 294.0    !soil temperature,(K)
 
 end module ACCESS_Constants
